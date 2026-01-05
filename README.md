@@ -34,3 +34,21 @@
 ---
 
 ## 📁 项目结构
+xiaochuan-shop/
+├── index.html              # 首页（商品列表 + 客户评价）
+├── cart.html               # 购物车页面
+├── checkout.html           # 结算提示页
+├── candle.html             # 香薰蜡烛详情页
+├── bookmark.html           # 木雕书签详情页
+├── teacup.html             # 青花茶杯详情页
+├── scarf.html              # 蓝染方巾详情页
+├── charm.html              # 祈福牌挂饰详情页
+├── style.css               # 全局样式
+├── README.md               # 本文件
+├── preview.jpg             # 首页截图（用于此文档展示）
+└── images/                 # 商品图片目录
+├── 山息手工大豆蜡香薰蜡烛.jpg
+├── 木语非遗木雕书签套装.jpg
+├── 瓷忆手绘青花小茶杯.jpg
+├── 织梦蓝染植物纹方巾.jpg
+└── 祈愿手作祈福牌挂饰.jpg
