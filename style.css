@@ -1,0 +1,416 @@
+/* style.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "PingFang SC", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
+  background-color: #f9f5f0;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* —————— 导航栏 —————— */
+.navbar {
+  background: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+}
+
+.nav-logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: #d46b42;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #444;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: #d46b42;
+}
+
+.cart-icon {
+  position: relative;
+  font-size: 20px;
+  color: #555;
+  text-decoration: none;
+}
+
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: #d46b42;
+  color: white;
+  font-size: 12px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 移动端菜单按钮（隐藏于PC） */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+}
+
+/* —————— 首页商品网格 —————— */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 30px;
+  padding: 40px 0;
+}
+
+.product-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.2s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.product-title {
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #2c2620;
+}
+
+.product-price {
+  padding: 0 16px 16px;
+  color: #d46b42;
+  font-weight: bold;
+}
+
+/* —————— 商品详情页通用样式 —————— */
+.product-hero {
+  display: flex;
+  gap: 40px;
+  margin: 40px 0;
+  align-items: flex-start;
+}
+
+.product-image img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.product-info {
+  flex: 1;
+  max-width: 500px;
+}
+
+.product-title-detail {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #2c2620;
+}
+
+.product-subtitle {
+  font-size: 16px;
+  color: #7a6e65;
+  margin-bottom: 20px;
+}
+
+.product-price-detail {
+  font-size: 24px;
+  font-weight: bold;
+  color: #d46b42;
+  margin-bottom: 20px;
+}
+
+.option-group {
+  margin-bottom: 24px;
+}
+
+.option-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #444;
+}
+
+.option-select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d9cfc5;
+  border-radius: 6px;
+  background-color: #fff;
+  font-size: 16px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 32px;
+  background-color: #d46b42;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #b95a38;
+}
+
+.section {
+  margin: 60px 0;
+  padding: 30px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.section h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #2c2620;
+  border-left: 4px solid #d46b42;
+  padding-left: 12px;
+}
+
+/* —————— 购物车页面 —————— */
+.cart-empty {
+  text-align: center;
+  padding: 80px 0;
+  color: #777;
+}
+
+.cart-items {
+  margin: 20px 0;
+}
+
+.cart-item {
+  display: flex;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-item img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.cart-item-info {
+  flex: 1;
+}
+
+.cart-total {
+  text-align: right;
+  font-size: 20px;
+  margin: 20px 0;
+  font-weight: bold;
+  color: #d46b42;
+}
+
+/* —————— 响应式 —————— */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none; /* 默认隐藏，JS 控制展开 */
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .product-hero {
+    flex-direction: column;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
+
+.add-to-cart-btn {
+  width: 100%;
+  padding: 8px;
+  background: #2c2620;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 8px;
+}
+.add-to-cart-btn:hover {
+  background: #443b33;
+}
+
+/* 搜索框样式 */
+.search-form {
+  display: flex;
+  align-items: center;
+  margin: 0 15px;
+}
+.search-form input {
+  width: 180px;
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  font-size: 14px;
+  outline: none;
+}
+.search-form button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: -25px; /* 让放大镜覆盖输入框右侧 */
+  z-index: 2;
+}
+.search-form input:focus {
+  border-color: #2c2620;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .search-form {
+    display: none; /* 手机端隐藏搜索框，避免拥挤 */
+  }
+}
+
+/* 客户评价模块 */
+.testimonials-section {
+  background: #faf8f5;
+  padding: 40px 0;
+  margin: 60px 0;
+}
+
+.testimonials-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.testimonial-card {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  width: 280px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+}
+
+.avatar {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.rating {
+  color: #e67e22;
+  font-size: 18px;
+  margin: 8px 0;
+  letter-spacing: 2px;
+}
+
+.comment {
+  font-style: italic;
+  color: #555;
+  line-height: 1.6;
+  margin: 12px 0;
+}
+
+.author {
+  color: #888;
+  font-weight: bold;
+}
+
+/* —— 页脚 Footer 样式 —— */
+.site-footer {
+  background: #f5f5f5;
+  padding: 30px 0;
+  margin-top: 60px;
+  font-size: 14px;
+  color: #666;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap; /* 允许小屏换行 */
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 200px;
+  margin: 0 15px;
+}
+
+.footer-section h4 {
+  margin-bottom: 15px;
+  color: #333;
+  font-size: 16px;
+}
+
+.footer-section p {
+  margin: 8px 0;
+  line-height: 1.5;
+}

@@ -1,0 +1,301 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>欢迎来到笑川の小店</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+  <div class="container nav-content">
+    <a href="index.html" class="nav-logo">笑川の小店</a>
+    
+    <form class="search-form" onsubmit="handleSearch(event)">
+      <input 
+        type="text" 
+        id="searchInput" 
+        placeholder="搜手作好物…" 
+        autocomplete="off"
+      />
+      <button type="submit">🔍</button>
+    </form>
+
+    <button class="menu-toggle">☰</button>
+    <ul class="nav-links">
+      <li><a href="index.html">首页</a></li>
+      <li><a href="cart.html">购物车</a></li>
+    </ul>
+    <a href="cart.html" class="cart-icon">
+      🛒
+      <span class="cart-count" id="cartCount">0</span>
+    </a>
+  </div>
+</nav>
+
+  <div class="container">
+    <h1 style="text-align:center; margin:40px 0; font-size:28px;">精选手作 · 温暖日常</h1>
+    <div class="products-grid">
+      <!-- 蜡烛 -->
+      <div class="product-card">
+        <a href="candle.html"><img src="山息手工大豆蜡香薰蜡烛.jpg" alt="山息手工大豆蜡香薰蜡烛" class="product-img"></a>
+        <div class="product-title">山息手工大豆蜡香薰蜡烛</div>
+        <div class="product-price">¥88.66</div>
+        <button class="add-to-cart-btn" onclick="addToCart_candle()">加入购物车</button>
+      </div>
+
+      <!-- 书签 -->
+      <div class="product-card">
+        <a href="bookmark.html"><img src="木语非遗木雕书签套装.jpg" alt="木语非遗木雕书签套装" class="product-img"></a>
+        <div class="product-title">木语非遗木雕书签套装</div>
+        <div class="product-price">¥36.88</div>
+        <button class="add-to-cart-btn" onclick="addToCart_bookmark()">加入购物车</button>
+      </div>
+
+      <!-- 茶杯 -->
+      <div class="product-card">
+        <a href="teacup.html"><img src="瓷忆手绘青花小茶杯.jpg" alt="瓷忆手绘青花小茶杯" class="product-img"></a>
+        <div class="product-title">瓷忆手绘青花小茶杯</div>
+        <div class="product-price">¥58.88</div>
+        <button class="add-to-cart-btn" onclick="addToCart_teacup()">加入购物车</button>
+      </div>
+
+      <!-- 方巾 -->
+      <div class="product-card">
+        <a href="scarf.html"><img src="织梦蓝染植物纹方巾.jpg" alt="织梦蓝染植物纹方巾" class="product-img"></a>
+        <div class="product-title">织梦蓝染植物纹方巾</div>
+        <div class="product-price">¥58.88</div>
+        <button class="add-to-cart-btn" onclick="addToCart_scarf()">加入购物车</button>
+      </div>
+
+      <!-- 祈福牌 -->
+      <div class="product-card">
+        <a href="charm.html"><img src="祈愿手作祈福牌挂饰.jpg" alt="祈愿手作祈福牌挂饰" class="product-img"></a>
+        <div class="product-title">祈愿手作祈福牌挂饰</div>
+        <div class="product-price">¥28.88</div>
+        <div style="font-size:12px; color:#777; margin:4px 0;">*标准款「平安顺遂」，定制请进详情页</div>
+        <button class="add-to-cart-btn" onclick="addToCart_charm()">加入购物车</button>
+      </div>
+    </div>
+
+<section class="testimonials-section">
+  <div class="container">
+    <h2 style="text-align: center; margin: 50px 0 30px; font-size: 24px; color: #2c2620;">
+      ❤️ 来自手作爱好者的温暖反馈
+    </h2>
+    <div class="testimonials-grid">
+      <!-- 评论1 -->
+      <div class="testimonial-card">
+        <div class="avatar">👩‍🎨</div>
+        <div class="rating">★★★★★</div>
+        <p class="comment">“青花茶杯太美了！釉色温润，每天喝茶都心情愉悦～”</p>
+        <div class="author">— 小赵</div>
+      </div>
+
+      <!-- 评论2 -->
+      <div class="testimonial-card">
+        <div class="avatar">👨‍💼</div>
+        <div class="rating">★★★★★</div>
+        <p class="comment">“祈福牌送给了刚高考完的女儿，她特别喜欢‘平安顺遂’这句，手工质感超赞！”</p>
+        <div class="author">— 老钱</div>
+      </div>
+
+      <!-- 评论3 -->
+      <div class="testimonial-card">
+        <div class="avatar">👩‍🌾</div>
+        <div class="rating">★★★★★</div>
+        <p class="comment">“蓝染方巾收到就爱上了！颜色是那种沉静的靛蓝，搭配白衬衫绝了。”</p>
+        <div class="author">— 阿孙</div>
+      </div>
+
+      <!-- 评论4 -->
+      <div class="testimonial-card">
+        <div class="avatar">📚</div>
+        <div class="rating">★★★★★</div>
+        <p class="comment">“木雕书签细节太精致了，送朋友当生日礼，被夸了一周！”</p>
+        <div class="author">— 书李</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </div>
+
+  <script>
+    // 更新右上角购物车数量
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+      const cartCountEl = document.getElementById('cartCount');
+      if (cartCountEl) {
+        cartCountEl.textContent = count;
+      }
+    }
+
+    // 将商品加入购物车（支持合并相同商品）
+    function updateCart(newItem) {
+      let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      const existingIndex = cart.findIndex(
+        item => item.id === newItem.id && item.variant === newItem.variant
+      );
+      if (existingIndex !== -1) {
+        cart[existingIndex].quantity += 1;
+      } else {
+        cart.push(newItem);
+      }
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`已将「${newItem.name}」加入购物车！`);
+      updateCartCount();
+    }
+
+    function addToCart_candle() {
+      updateCart({
+        id: 'candle',
+        name: '山息手工大豆蜡香薰蜡烛',
+        variant: '森林晨露（雪松+佛手柑）',
+        price: 88.66,
+        image: '山息手工大豆蜡香薰蜡烛.jpg',
+        quantity: 1
+      });
+    }
+
+    function addToCart_bookmark() {
+      updateCart({
+        id: 'bookmark',
+        name: '木语非遗木雕书签套装',
+        variant: '青鸾衔书',
+        price: 36.88,
+        image: '木语非遗木雕书签套装.jpg',
+        quantity: 1
+      });
+    }
+
+    function addToCart_teacup() {
+      updateCart({
+        id: 'teacup',
+        name: '瓷忆手绘青花小茶杯',
+        variant: '简约山水',
+        price: 58.88,
+        image: '瓷忆手绘青花小茶杯.jpg',
+        quantity: 1
+      });
+    }
+
+    function addToCart_scarf() {
+      updateCart({
+        id: 'scarf',
+        name: '织梦蓝染植物纹方巾',
+        variant: '深靛蓝',
+        price: 58.88,
+        image: '织梦蓝染植物纹方巾.jpg',
+        quantity: 1
+      });
+    }
+
+    function addToCart_charm() {
+      const newItem = {
+        id: 'charm',
+        name: '祈愿手作祈福牌挂饰',
+        variant: '平安顺遂',
+        price: 28.88,
+        image: '祈愿手作祈福牌挂饰.jpg',
+        quantity: 1
+      };
+      updateCart(newItem);
+      alert('已将【标准款】祈福牌「平安顺遂」加入购物车！\n如需自定义名字，请前往商品详情页。');
+    }
+
+    // 初始化购物车数量
+    updateCartCount();
+
+const PRODUCT_KEYWORDS = {
+ 	'candle': ['蜡烛', '香薰', '大豆蜡', '山息'],
+  	'bookmark': ['书签', '木雕', '非遗', '木语'],
+  	'teacup': ['茶杯', '青花', '瓷忆', '小茶杯'],
+ 	'scarf': ['方巾', '蓝染', '织梦', '植物纹'],
+  	'charm': ['祈福牌', '挂饰', '祈愿', '平安']
+};
+
+function handleSearch(event) {
+  event.preventDefault();
+  const keyword = document.getElementById('searchInput').value.trim().toLowerCase();
+  
+  if (!keyword) {
+    alert('请输入商品关键词');
+    return;
+  }
+
+  let targetPage = '';
+  for (const [page, keywords] of Object.entries(PRODUCT_KEYWORDS)) {
+    if (keywords.some(k => keyword.includes(k.toLowerCase()))) {
+      targetPage = `${page}.html`;
+      break;
+    }
+  }
+
+  if (targetPage) {
+    window.location.href = targetPage;
+  } else {
+    alert('未找到相关商品，请尝试：蜡烛、书签、茶杯、方巾、祈福牌');
+  }
+}
+  </script>
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h4>客户服务</h4>
+      <p>工作时间：9:00 - 21:00</p>
+      <p>客服微信：xiaochuan_shop</p>
+      <p>📧邮箱： xiaochuan@sun.com</p>
+    </div>
+    <div class="footer-section">
+      <h4>购物指南</h4>
+      <p>• 发货时间：下单后48小时内</p>
+      <p>• 退换政策：支持7天无理由退换</p>
+      <p>• 运费说明：满99元包邮</p>
+    </div>
+    <div class="footer-section">
+      <h4>关于我们</h4>
+      <p>笑川の小店 · 专注手作温度</p>
+      <p>每一件作品均为匠人手工制作</p>
+      <p>© 2026 笑川の小店 版权所有</p>
+      <p>浙ICP备12345678号</p> 
+    </div>
+  </div>
+
+</footer>
+
+<style>
+.site-footer {
+  background: #f5f5f5;
+  padding: 30px 0;
+  margin-top: 60px;
+  font-size: 14px;
+  color: #666;
+}
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.footer-section {
+  flex: 1;
+  min-width: 200px;
+  margin: 0 15px;
+}
+.footer-section h4 {
+  margin-bottom: 15px;
+  color: #333;
+  font-size: 16px;
+}
+.footer-section p {
+  margin: 8px 0;
+  line-height: 1.5;
+}
+</style>
+</body>
+</html>

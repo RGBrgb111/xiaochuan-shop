@@ -1,0 +1,81 @@
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>结算付款 - 笑川の小店</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      background: #f9f7f4;
+      color: #333;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 30px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #2c2620;
+    }
+    .notice {
+      font-size: 18px;
+      margin: 20px 0;
+      color: #e63946;
+      font-weight: bold;
+    }
+    .contact {
+      font-size: 22px;
+      margin: 15px 0;
+      letter-spacing: 3px;
+    }
+    .tip {
+      background: #fff8e1;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 25px;
+      font-size: 14px;
+      color: #555;
+    }
+    .back-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 24px;
+      background: #2c2620;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+    .back-btn:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🛒 订单已提交，请完成付款</h1>
+    
+    <div class="notice">付款请联系</div>
+    <div class="contact">23120170胡恒越</div>
+
+    <div class="tip">
+      💬 请通过微信/QQ/电话联系客服，提供您的<strong>订单信息</strong>，我们将为您确认发货。<br>
+      （您可在聊天中发送本页面截图）
+    </div>
+
+    <a href="cart.html" class="back-btn">← 返回购物车</a>
+  </div>
+
+  <script>
+        localStorage.removeItem('cart');
+  </script>
+</body>
+</html>

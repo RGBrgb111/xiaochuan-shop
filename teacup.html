@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>瓷忆手绘青花小茶杯</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container nav-content">
+      <a href="index.html" class="nav-logo">笑川の小店</a>
+      <button class="menu-toggle">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="cart.html">购物车</a></li>
+      </ul>
+      <a href="cart.html" class="cart-icon">
+        🛒
+        <span class="cart-count" id="cartCount">0</span>
+      </a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="product-hero">
+      <div class="product-image">
+        <img src="瓷忆手绘青花小茶杯.jpg" alt="瓷忆手绘青花小茶杯">
+      </div>
+      <div class="product-info">
+        <h1 class="product-title-detail">瓷忆手绘青花小茶杯</h1>
+        <p class="product-subtitle">景德镇高白泥 · 1300℃高温烧制</p>
+        <div class="product-price-detail">¥58.88</div>
+        <p class="product-description">
+          一人一盏，80ml黄金容量。钴料手绘山水或折枝梅，釉面温润如玉。每只杯底有匠人落款，独一无二。
+        </p>
+
+        <div class="option-group">
+          <label class="option-label">选择图案</label>
+          <select class="option-select" id="designSelect">
+            <option>简约山水</option>
+            <option>折枝梅花</option>
+            <option>团花纹</option>
+          </select>
+        </div>
+
+        <button class="btn" onclick="addToCart()">加入购物车</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>关于「瓷忆」</h2>
+      <p>
+        与景德镇老窑口合作，采用传统青花分水技法。
+        从拉坯到烧成，历经72道工序，只为呈现一杯一世界的东方美学。
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>产品说明</h2>
+      <ul class="features-list">
+        <li><strong>材质</strong>：景德镇高白泥</li>
+        <li><strong>容量</strong>：80ml</li>
+        <li><strong>烧成温度</strong>：1300℃</li>
+        <li><strong>适用</strong>：微波炉、洗碗机（建议手洗以延长寿命）</li>
+        <li><strong>注意</strong>：手工制品尺寸略有差异，属正常现象</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+function updateCartCount() {
+  const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+  const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+  document.getElementById('cartCount').textContent = count;
+}
+
+function updateCart(newItem) {
+  let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+  const existingIndex = cart.findIndex(item => 
+    item.id === newItem.id && item.variant === newItem.variant
+  );
+  if (existingIndex !== -1) {
+    cart[existingIndex].quantity += 1;
+  } else {
+    cart.push(newItem);
+  }
+  localStorage.setItem('cart', JSON.stringify(cart));
+  alert(`已将「${newItem.variant}」${newItem.name}加入购物车！`);
+  updateCartCount();
+}
+
+function addToCart() {
+  const design = document.getElementById('designSelect').value;
+  const newItem = {
+    id: 'teacup',
+    name: '瓷忆手绘青花小茶杯',
+    variant: design,
+    price: 58.88,
+    image: '瓷忆手绘青花小茶杯.jpg',
+    quantity: 1
+  };
+  updateCart(newItem);
+}
+
+updateCartCount();
+</script>
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h4>客户服务</h4>
+      <p>工作时间：9:00 - 21:00</p>
+      <p>客服微信：xiaochuan_shop</p>
+      <p>📧邮箱： xiaochuan@sun.com</p>
+    </div>
+    <div class="footer-section">
+      <h4>购物指南</h4>
+      <p>• 发货时间：下单后48小时内</p>
+      <p>• 退换政策：支持7天无理由退换</p>
+      <p>• 运费说明：满99元包邮</p>
+    </div>
+    <div class="footer-section">
+      <h4>关于我们</h4>
+      <p>笑川の小店 · 专注手作温度</p>
+      <p>每一件作品均为匠人手工制作</p>
+      <p>© 2026 笑川の小店 版权所有</p>
+      <p>浙ICP备12345678号</p> 
+    </div>
+  </div>
+</footer>
+
+<style>
+</body>
+</html>

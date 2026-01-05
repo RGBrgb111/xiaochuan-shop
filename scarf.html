@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>织梦蓝染植物纹方巾</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container nav-content">
+      <a href="index.html" class="nav-logo">笑川の小店</a>
+      <button class="menu-toggle">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="cart.html">购物车</a></li>
+      </ul>
+      <a href="cart.html" class="cart-icon">
+        🛒
+        <span class="cart-count" id="cartCount">0</span>
+      </a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="product-hero">
+      <div class="product-image">
+        <img src="images/scarf.jpg" alt="织梦蓝染植物纹方巾">
+      </div>
+      <div class="product-info">
+        <h1 class="product-title-detail">织梦蓝染植物纹方巾</h1>
+        <p class="product-subtitle">100%纯棉 · 天然板蓝根染色</p>
+        <div class="product-price-detail">¥58.88</div>
+        <p class="product-description">
+          采用古法“夹缬”工艺，以真实植物压印出叶脉肌理。每条方巾的纹路都不可复制，是自然与手作的对话。
+        </p>
+
+        <div class="option-group">
+          <label class="option-label">选择主色调</label>
+          <select class="option-select" id="toneSelect">
+            <option>深靛蓝</option>
+            <option>灰蓝</option>
+            <option>青黛</option>
+          </select>
+        </div>
+
+        <button class="btn" onclick="addToCart()">加入购物车</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>关于「织梦」</h2>
+      <p>
+        蓝染染料来自贵州山区种植的板蓝根，无化学添加。
+        方巾可作头巾、包饰、茶席或装裱挂画，让传统工艺融入现代生活。
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>产品说明</h2>
+      <ul class="features-list">
+        <li><strong>材质</strong>：100%纯棉</li>
+        <li><strong>尺寸</strong>：50cm × 50cm</li>
+        <li><strong>染色</strong>：天然植物染，色牢度高</li>
+        <li><strong>洗涤</strong>：首次洗涤可能轻微掉色，属正常现象；建议单独手洗</li>
+        <li><strong>注意</strong>：避免长时间暴晒以防褪色</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+function updateCartCount() {
+  const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+  const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+  document.getElementById('cartCount').textContent = count;
+}
+
+function updateCart(newItem) {
+  let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+  const existingIndex = cart.findIndex(item => 
+    item.id === newItem.id && item.variant === newItem.variant
+  );
+  if (existingIndex !== -1) {
+    cart[existingIndex].quantity += 1;
+  } else {
+    cart.push(newItem);
+  }
+  localStorage.setItem('cart', JSON.stringify(cart));
+  alert(`已将「${newItem.variant}」${newItem.name}加入购物车！`);
+  updateCartCount();
+}
+
+function addToCart() {
+  const tone = document.getElementById('toneSelect').value;
+  const newItem = {
+    id: 'scarf',
+    name: '织梦蓝染植物纹方巾',
+    variant: tone,
+    price: 68.88,
+    image: '织梦蓝染植物纹方巾.jpg',
+    quantity: 1
+  };
+  updateCart(newItem);
+}
+
+updateCartCount();
+</script>
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h4>客户服务</h4>
+      <p>工作时间：9:00 - 21:00</p>
+      <p>客服微信：xiaochuan_shop</p>
+      <p>📧邮箱： xiaochuan@sun.com</p>
+    </div>
+    <div class="footer-section">
+      <h4>购物指南</h4>
+      <p>• 发货时间：下单后48小时内</p>
+      <p>• 退换政策：支持7天无理由退换</p>
+      <p>• 运费说明：满99元包邮</p>
+    </div>
+    <div class="footer-section">
+      <h4>关于我们</h4>
+      <p>笑川の小店 · 专注手作温度</p>
+      <p>每一件作品均为匠人手工制作</p>
+      <p>© 2026 笑川の小店 版权所有</p>
+      <p>浙ICP备12345678号</p> 
+    </div>
+  </div>
+</footer>
+
+<style>
+</body>
+</html>

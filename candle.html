@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>山息手工大豆蜡香薰蜡烛</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container nav-content">
+      <a href="index.html" class="nav-logo">笑川の小店</a>
+      <button class="menu-toggle">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="cart.html">购物车</a></li>
+      </ul>
+      <a href="cart.html" class="cart-icon">
+        🛒
+        <span class="cart-count" id="cartCount">0</span>
+      </a>
+    </div>
+  </nav>
+  <div class="container">
+    <!-- 商品主图与信息 -->
+    <div class="product-hero">
+      <div class="product-image">
+        <img src="山息手工大豆蜡香薰蜡烛.jpg" alt="山息手工大豆蜡香薰蜡烛">
+      </div>
+      <div class="product-info">
+        <h1 class="product-title">山息手工大豆蜡香薰蜡烛</h1>
+        <p class="product-subtitle">天然大豆蜡 · 手捏陶杯 · 无烟慢燃</p>
+        <div class="product-price">¥88.66</div>
+        <p class="product-description">
+          以山野为灵感，融合雪松、佛手柑与白茶的清雅气息。每一只陶杯由匠人手捏成型，独一无二。点燃它，让家成为心灵的栖息地。
+        </p>
+
+        <div class="option-group">
+          <label class="option-label">选择香型</label>
+          <select class="option-select" id="scentSelect">
+            <option>森林晨露（雪松+佛手柑）</option>
+            <option>书院墨香（檀香+纸莎草）</option>
+            <option>桂雨江南（桂花+白茶）</option>
+          </select>
+        </div>
+
+        <button class="btn" onclick="addToCart()">加入购物车</button>
+      </div>
+    </div>
+
+    <!-- 匠人故事 -->
+    <div class="section">
+      <h2>关于「山息」</h2>
+      <p>
+        在浙江莫干山脚下的小工作室里，我们坚持用天然大豆蜡与环保棉芯制作每一支蜡烛。
+        陶杯由本地陶艺师手捏烧制，保留泥土的呼吸感；香精选用法国进口蜡烛专用精油，安全持久。
+      </p>
+      <p>
+        我们相信，真正的香气不是掩盖生活，而是让日常多一分宁静与诗意。
+      </p>
+    </div>
+
+    <!-- 产品详情 -->
+    <div class="section">
+      <h2>产品说明</h2>
+      <ul class="features-list">
+        <li><strong>材质</strong>：100%天然大豆蜡 + 环保棉芯 + 手工陶杯</li>
+        <li><strong>燃烧时间</strong>：约40小时</li>
+        <li><strong>尺寸</strong>：直径 7cm × 高 8cm</li>
+        <li><strong>使用建议</strong>：首次点燃请持续2-3小时，使蜡池完全融化，避免记忆圈</li>
+        <li><strong>储存方式</strong>：置于阴凉干燥处，避免阳光直射</li>
+      </ul>
+    </div>
+  </div>
+  <script>
+function updateCartCount() {
+  const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+  const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+  document.getElementById('cartCount').textContent = count;
+}
+
+function updateCart(newItem) {
+  let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+  const existingIndex = cart.findIndex(item => 
+    item.id === newItem.id && item.variant === newItem.variant
+  );
+  if (existingIndex !== -1) {
+    cart[existingIndex].quantity += 1;
+  } else {
+    cart.push(newItem);
+  }
+  localStorage.setItem('cart', JSON.stringify(cart));
+  alert(`已将「${newItem.variant}」${newItem.name}加入购物车！`);
+  updateCartCount();
+}
+
+function addToCart() {
+  const scent = document.getElementById('scentSelect').value;
+  const newItem = {
+    id: 'candle',
+    name: '山息手工大豆蜡香薰蜡烛',
+    variant: scent,
+    price: 48.88,
+    image: '山息手工大豆蜡香薰蜡烛.jpg',
+    quantity: 1
+  };
+  updateCart(newItem);
+}
+
+updateCartCount();
+</script>
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h4>客户服务</h4>
+      <p>工作时间：9:00 - 21:00</p>
+      <p>客服微信：xiaochuan_shop</p>
+      <p>📧 xiaochuan@sun.com</p>
+    </div>
+    <div class="footer-section">
+      <h4>购物指南</h4>
+      <p>• 发货时间：下单后48小时内</p>
+      <p>• 退换政策：支持7天无理由退换</p>
+      <p>• 运费说明：满99元包邮</p>
+    </div>
+    <div class="footer-section">
+      <h4>关于我们</h4>
+      <p>笑川の小店 · 专注手作温度</p>
+      <p>每一件作品均为匠人手工制作</p>
+      <p>© 2026 笑川の小店 版权所有</p>
+      <p>浙ICP备12345678号</p>
+    </div>
+  </div>
+</footer>
+<style>
+</body>
+</html>

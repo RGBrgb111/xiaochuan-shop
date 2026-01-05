@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>祈愿手作祈福牌挂饰</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container nav-content">
+      <a href="index.html" class="nav-logo">笑川の小店</a>
+      <button class="menu-toggle">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="cart.html">购物车</a></li>
+      </ul>
+      <a href="cart.html" class="cart-icon">
+        🛒
+        <span class="cart-count" id="cartCount">0</span>
+      </a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="product-hero">
+      <div class="product-image">
+        <img src="images/charm.jpg" alt="祈愿手作祈福牌挂饰">
+      </div>
+      <div class="product-info">
+        <h1 class="product-title-detail">祈愿手作祈福牌挂饰</h1>
+        <p class="product-subtitle">原木片手写祝福 · 可定制名字</p>
+        <div class="product-price-detail">¥28.88</div>
+        <p class="product-description">
+          选用天然榉木片，手写烫金祝福语。可挂于背包、车窗、床头，把心愿轻轻挂在风里。
+        </p>
+
+        <div class="option-group">
+          <label class="option-label">选择祝福语</label>
+          <select class="option-select" id="blessingSelect">
+            <option>平安顺遂</option>
+            <option>心有所栖</option>
+            <option>日日是好日</option>
+            <option>自定义名字（+¥10）</option>
+          </select>
+        </div>
+
+        <button class="btn" onclick="addToCart()">加入购物车</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>关于「祈愿」</h2>
+      <p>
+        每一块木牌都由我们亲手打磨、书写、穿绳。
+        自定义名字服务需在订单备注中说明，我们将为你专属制作。
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>产品说明</h2>
+      <ul class="features-list">
+        <li><strong>材质</strong>：天然榉木 + 红绳</li>
+        <li><strong>尺寸</strong>：约 5cm × 3cm</li>
+        <li><strong>工艺</strong>：手工打磨 + 烫金书写</li>
+        <li><strong>定制</strong>：选择“自定义名字”后，请在结算页备注内容</li>
+        <li><strong>包装</strong>：独立牛皮纸信封</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+function updateCartCount() {
+  const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+  const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+  document.getElementById('cartCount').textContent = count;
+}
+
+function updateCart(newItem) {
+  let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+  const existingIndex = cart.findIndex(item => 
+    item.id === newItem.id && item.variant === newItem.variant
+  );
+  if (existingIndex !== -1) {
+    cart[existingIndex].quantity += 1;
+  } else {
+    cart.push(newItem);
+  }
+  localStorage.setItem('cart', JSON.stringify(cart));
+  alert(`已将「${newItem.variant}」${newItem.name}加入购物车！`);
+  updateCartCount();
+}
+
+function addToCart() {
+  const blessing = document.getElementById('blessingSelect').value;
+  let price = 28.88;
+  if (blessing.includes('自定义')) price = 38.88;
+
+  const newItem = {
+    id: 'charm',
+    name: '祈愿手作祈福牌挂饰',
+    variant: blessing,
+    price: price,
+    image: '祈愿手作祈福牌挂饰.jpg',
+    quantity: 1
+  };
+  updateCart(newItem);
+}
+
+updateCartCount();
+</script>
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h4>客户服务</h4>
+      <p>工作时间：9:00 - 21:00</p>
+      <p>客服微信：xiaochuan_shop</p>
+      <p>📧邮箱： xiaochuan@sun.com</p>
+    </div>
+    <div class="footer-section">
+      <h4>购物指南</h4>
+      <p>• 发货时间：下单后48小时内</p>
+      <p>• 退换政策：支持7天无理由退换</p>
+      <p>• 运费说明：满99元包邮</p>
+    </div>
+    <div class="footer-section">
+      <h4>关于我们</h4>
+      <p>笑川の小店 · 专注手作温度</p>
+      <p>每一件作品均为匠人手工制作</p>
+      <p>© 2026 笑川の小店 版权所有</p>
+      <p>浙ICP备12345678号</p> 
+    </div>
+  </div>
+</footer>
+
+<style>
+</body>
+</html>
